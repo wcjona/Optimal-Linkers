@@ -1,0 +1,11 @@
+REMARK  3 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: Y_1  and  Y_1 
+REMARK    2  A    between atoms: Y_2  and  Y_2 
+REMARK    3  A    between atoms: Y_3  and  Y_3 
+ROOT
+HETATM    1  R   YT3 X 200      43.457  27.032  43.346  1.00  0.00     3.000 R  
+HETATM    2  R   YT3 X 201      29.878  38.075  19.025  1.00  0.00     3.000 R  
+HETATM    3  R   YT3 X 202      26.208  44.050  28.196  1.00  0.00     3.000 R  
+ENDROOT
+TORSDOF 3

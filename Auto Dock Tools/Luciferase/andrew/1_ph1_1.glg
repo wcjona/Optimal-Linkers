@@ -1,0 +1,1653 @@
+
+       _______________________________________________________
+
+__________//____________________________/////_________________/________
+_________/__/____________/_____________/______________/_______/________
+________/____/___________/_____________/______________________/________
+________/____/__/_____/_/////___/////__/__////_/_///__/__////_/________
+_______/______/_/_____/__/_____/_____/_/_____/_//___/_/_/____//________
+_______////////_/_____/__/_____/_____/_/_____/_/______/_/_____/________
+_______/______/_/____//__/___/_/_____/_/_____/_/______/_/____//________
+_______/______/__////_/___///___/////___/////__/______/__////_/________
+
+       _______________________________________________________
+
+                                ______
+                               /      \
+                              /        \
+                             /          \
+                             \    /\    /
+                              \  /  \  /
+                               \/ /\ \/
+                                 /  \
+                                /____\
+
+
+                ______________________________________ 
+               |                                      |
+               |            AutoGrid 4.2.6            |
+               |                                      |
+               |        Garrett M. Morris, TSRI       |
+               |            Ruth Huey, TSRI           |
+               |        David S. Goodsell, TSRI       |
+               |         Arthur J. Olson, TSRI        |
+               |                                      |
+               |        (C) 1989-2009, TSRI           |
+               |   The Scripps Research Institute     |
+               |______________________________________|
+
+                ______________________________________ 
+               |                                      |
+               | Calculation of van der Waals, H-Bond,|
+               |   Electrostatic Potential Energy, &  |
+               |   Desolvation Free Energy Grid Maps  |
+               |             for AutoDock             |
+               | For help, email autodock@scripps.edu |
+               |______________________________________|
+
+
+
+
+                           $Revision: 1.109 $
+Compilation parameters:  NUM_RECEPTOR_TYPES=20 NEINT=2048
+   MAX_MAPS=16 NDIEL=16384 MAX_ATOM_TYPES=14
+ energy_lookup table has   655360 entries of size 8
+        e_vdW_Hb table has   401408 entries of size 8
+Maximum number of maps that can be computed = 16 (defined by MAX_MAPS in "autocomm.h").
+This file was created at:			10:25 48" a.m., 06/03/2021
+                   using:			"DESKTOP-OBO5JCO"
+
+
+GPF> npts 94 88 126                       # num.grid points in xyz
+
+Number of grid points in x-direction:	95
+Number of grid points in y-direction:	89
+Number of grid points in z-direction:	127
+
+GPF> parameter_file AD4.1_bound.dat       # force field default parameter file
+Using read_parameter_library() to try to open and read "AD4.1_bound.dat".
+
+GPF> gridfld output_model1.maps.fld       # grid_data_file
+
+Creating (AVS-readable) grid maps file : output_model1.maps.fld
+
+Creating (AVS-readable) grid-coordinates extrema file : output_model1.maps.xyz
+
+GPF> spacing 0.375                        # spacing(A)
+Grid Spacing :			0.375 Angstrom
+
+GPF> receptor_types A C H HD N OA         # receptor atom types
+GPF> ligand_types R                       # ligand atom types
+
+Atom type names for ligand atom types 1-1 used for ligand-atom affinity grid maps:
+
+			Atom type number 0 corresponds to atom type name "R".
+
+
+GPF> receptor output_model1.pdbqt         # macromolecule
+
+Receptor Input File :	output_model1.pdbqt
+
+Receptor Atom Type Assignments:
+
+Atom no.  1, " N  " at (46.039, 19.108, 24.212),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no.  2, " CA " at (45.071, 19.776, 23.321),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no.  3, " C  " at (44.853, 21.290, 23.485),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no.  4, " O  " at (44.270, 21.913, 22.603),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no.  5, " CB " at (43.760, 19.022, 23.523),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no.  6, " CG " at (44.235, 17.609, 23.833),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no.  7, " CD " at (45.444, 17.879, 24.726),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no.  8, " HN2" at (46.075, 19.591, 25.076),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no.  9, " HN1" at (46.924, 19.077, 23.779),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 10, " N  " at (45.329, 21.900, 24.574),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 11, " CA " at (45.351, 23.363, 24.812),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 12, " C  " at (43.990, 24.069, 24.690),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 13, " O  " at (43.256, 24.121, 25.674),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 14, " CB " at (46.446, 24.055, 23.982),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 15, " CG2" at (46.699, 25.494, 24.401),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 16, " OG1" at (47.669, 23.380, 24.163),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 17, " HN " at (45.802, 21.319, 25.250),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 18, " HG1" at (47.534, 22.379, 24.157),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 19, " N  " at (43.647, 24.636, 23.527),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 20, " CA " at (42.527, 25.580, 23.362),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 21, " C  " at (41.191, 24.979, 23.811),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 22, " O  " at (40.439, 25.623, 24.544),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 23, " CB " at (42.438, 26.062, 21.901),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 24, " CG2" at (43.730, 26.718, 21.419),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 25, " OG1" at (42.169, 24.995, 21.026),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 26, " HN " at (44.227, 24.459, 22.717),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 27, " HG1" at (42.625, 24.148, 21.335),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 28, " N  " at (40.941, 23.718, 23.456),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 29, " CA " at (39.747, 22.956, 23.830),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 30, " C  " at (39.673, 22.625, 25.319),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 31, " O  " at (38.579, 22.366, 25.813),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 32, " CB " at (39.698, 21.632, 23.059),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 33, " CG2" at (39.446, 21.819, 21.569),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 34, " OG1" at (40.914, 20.933, 23.200),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 35, " HN " at (41.628, 23.244, 22.880),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 36, " HG1" at (41.338, 21.123, 24.096),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 37, " N  " at (40.795, 22.606, 26.047),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 38, " CA " at (40.869, 22.235, 27.477),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 39, " C  " at (41.126, 23.426, 28.419),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 40, " O  " at (41.155, 23.271, 29.643),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 41, " CB " at (41.839, 21.058, 27.670),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 42, " CG2" at (43.314, 21.411, 27.515),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 43, " OG1" at (41.679, 20.471, 28.937),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 44, " HN " at (41.660, 22.841, 25.582),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 45, " HG1" at (41.318, 21.139, 29.604),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 46, " N  " at (41.237, 24.648, 27.874),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 47, " CA " at (41.181, 25.932, 28.599),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 48, " C  " at (39.701, 26.301, 28.872),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 49, " O  " at (39.172, 27.231, 28.263),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 50, " CB " at (41.940, 26.992, 27.762),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 51, " CG " at (42.191, 28.297, 28.542),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 52, " CD " at (42.135, 29.566, 27.669),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 53, " CE " at (43.287, 29.754, 26.674),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 54, " NZ " at (44.517, 30.243, 27.341),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 55, " HN " at (41.270, 24.683, 26.860),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 56, " HZ1" at (44.950, 29.513, 27.898),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 57, " HZ2" at (45.192, 30.562, 26.653),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 58, " HZ3" at (44.331, 31.014, 27.980),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 59, " N  " at (38.997, 25.478, 29.664),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 60, " CA " at (37.552, 25.231, 29.431),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 61, " C  " at (36.651, 25.125, 30.670),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 62, " O  " at (35.435, 25.129, 30.518),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 63, " CB " at (37.412, 24.026, 28.466),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 64, " CG1" at (37.575, 22.676, 29.172),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 65, " CG2" at (36.109, 23.991, 27.665),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 66, " HN " at (39.515, 24.744, 30.132),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 67, " N  " at (37.172, 25.079, 31.898),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 68, " CA " at (36.373, 24.975, 33.131),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 69, " C  " at (37.053, 25.688, 34.316),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 70, " O  " at (38.196, 26.144, 34.224),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 71, " CB " at (36.209, 23.491, 33.528),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 72, " CG " at (35.418, 22.598, 32.592),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 73, " OD1" at (35.961, 21.519, 32.267),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 74, " OD2" at (34.211, 22.855, 32.370),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 75, " HN " at (38.175, 25.121, 32.002),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 76, " HD2" at (33.709, 22.264, 31.780),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 77, " N  " at (36.421, 25.590, 35.495),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 78, " CA " at (37.150, 25.599, 36.772),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 79, " C  " at (38.371, 24.660, 36.735),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 80, " O  " at (39.416, 25.037, 37.233),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 81, " CB " at (36.208, 25.265, 37.956),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 82, " CG1" at (36.854, 25.699, 39.292),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 83, " CG2" at (35.784, 23.787, 37.967),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 84, " CD1" at (36.465, 24.970, 40.582),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 85, " HN " at (35.466, 25.260, 35.494),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 86, " N  " at (38.339, 23.502, 36.060),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 87, " CA " at (39.483, 22.589, 35.944),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 88, " C  " at (40.706, 23.149, 35.163),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 89, " O  " at (41.762, 22.511, 35.167),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 90, " CB " at (38.978, 21.256, 35.370),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 91, " HN " at (37.470, 23.218, 35.636),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 92, " N  " at (40.606, 24.330, 34.536),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 93, " CA " at (41.733, 25.073, 33.948),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 94, " C  " at (42.355, 26.095, 34.921),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 95, " O  " at (43.449, 26.603, 34.662),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 96, " CB " at (41.258, 25.759, 32.660),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 97, " HN " at (39.692, 24.768, 34.481),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 98, " N  " at (41.682, 26.390, 36.047),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 99, " CA " at (42.075, 27.379, 37.074),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 100, " C  " at (42.062, 26.849, 38.526),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 101, " O  " at (42.630, 27.467, 39.421),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 102, " CB " at (41.233, 28.646, 36.862),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 103, " CG " at (41.541, 29.251, 35.509),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 104, " CD1" at (42.719, 30.001, 35.360),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 105, " CD2" at (40.779, 28.906, 34.377),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 106, " CE1" at (43.143, 30.391, 34.083),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 107, " CE2" at (41.220, 29.278, 33.095),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 108, " CZ " at (42.413, 30.003, 32.950),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 109, " HN " at (40.781, 25.941, 36.168),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 110, " N  " at (41.554, 25.630, 38.710),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 111, " CA " at (41.762, 24.724, 39.837),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 112, " C  " at (42.168, 23.301, 39.399),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 113, " O  " at (41.740, 22.338, 40.039),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 114, " CB " at (40.548, 24.745, 40.790),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 115, " CG " at (40.939, 25.027, 42.227),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 116, " OD1" at (40.427, 24.396, 43.164),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 117, " OD2" at (41.812, 25.915, 42.457),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 118, " HN " at (40.991, 25.259, 37.951),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 119, " HD2" at (42.187, 26.395, 41.696),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 120, " N  " at (43.050, 23.068, 38.390),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 121, " CA " at (43.726, 21.767, 38.288),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 122, " C  " at (44.591, 21.525, 39.544),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 123, " O  " at (44.802, 20.381, 39.947),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 124, " CB " at (44.578, 21.837, 37.021),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 125, " CG " at (44.939, 23.317, 36.936),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 126, " CD " at (43.710, 24.021, 37.509),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 127, " N  " at (44.982, 22.610, 40.225),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 128, " CA " at (45.776, 22.589, 41.444),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 129, " C  " at (45.079, 21.901, 42.632),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 130, " O  " at (45.762, 21.264, 43.434),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 131, " CB " at (46.170, 24.041, 41.783),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 132, " CG " at (45.005, 24.985, 42.132),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 133, " OD1" at (44.889, 26.140, 41.685),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 134, " OD2" at (44.177, 24.794, 43.046),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 135, " HN " at (44.793, 23.506, 39.801),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 136, " HD2" at (43.478, 25.387, 43.208),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 137, " N  " at (43.759, 22.062, 42.803),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 138, " CA " at (43.036, 21.912, 44.089),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 139, " C  " at (43.917, 22.114, 45.332),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 140, " O  " at (43.961, 21.262, 46.226),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 141, " CB " at (42.236, 20.606, 44.132),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 142, " CG " at (41.127, 20.582, 43.070),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 143, " CD " at (39.724, 20.506, 43.683),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 144, " CE " at (38.801, 19.693, 42.782),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 145, " NZ " at (39.049, 18.241, 42.932),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 146, " HN " at (43.249, 22.521, 42.061),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 147, " HZ1" at (40.027, 18.006, 42.775),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 148, " HZ2" at (38.795, 17.933, 43.864),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 149, " HZ3" at (38.492, 17.704, 42.274),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 150, " N  " at (44.628, 23.241, 45.374),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 151, " CA " at (45.296, 23.757, 46.585),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 152, " C  " at (44.278, 23.859, 47.740),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 153, " O  " at (44.583, 23.625, 48.904),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 154, " CB " at (45.951, 25.125, 46.263),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 155, " CG " at (45.079, 26.075, 45.424),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 156, " OD2" at (45.492, 26.733, 44.433),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 157, " OD1" at (43.828, 26.140, 45.520),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 158, " HN " at (44.549, 23.835, 44.554),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 159, " HD2" at (44.937, 27.306, 43.910),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 160, " N  " at (43.025, 24.124, 47.385),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 161, " CA " at (41.844, 24.028, 48.225),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 162, " C  " at (40.620, 24.389, 47.398),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 163, " O  " at (39.672, 23.609, 47.355),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 164, " HN " at (42.885, 24.350, 46.408),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 165, " N  " at (40.691, 25.528, 46.709),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 166, " CA " at (39.606, 26.097, 45.900),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 167, " C  " at (40.125, 27.009, 44.777),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 168, " O  " at (41.330, 27.324, 44.693),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 169, " CB " at (38.672, 26.944, 46.787),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 170, " CG2" at (37.982, 26.198, 47.927),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 171, " OG1" at (39.387, 28.035, 47.315),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 172, " HN " at (41.516, 26.097, 46.813),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 173, " HG1" at (38.790, 28.618, 47.884),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 174, " N  " at (39.178, 27.481, 43.960),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 175, " CA " at (39.134, 28.831, 43.399),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 176, " C  " at (38.744, 29.833, 44.488),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 177, " O  " at (37.599, 29.887, 44.935),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 178, " CB " at (38.182, 28.869, 42.177),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 179, " CG1" at (38.864, 28.116, 41.008),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 180, " CG2" at (37.777, 30.295, 41.777),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 181, " CD1" at (38.569, 28.572, 39.569),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 182, " HN " at (38.275, 27.024, 44.013),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 183, " N  " at (39.708, 30.650, 44.888),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 184, " CA " at (39.511, 32.027, 45.322),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 185, " C  " at (39.278, 32.932, 44.094),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 186, " O  " at (39.716, 32.599, 42.994),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 187, " CB " at (40.692, 32.538, 46.180),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 188, " CG " at (42.102, 31.920, 46.036),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 189, " OD1" at (42.331, 30.844, 45.430),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 190, " OD2" at (43.032, 32.527, 46.614),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 191, " HN " at (40.647, 30.441, 44.572),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 192, " HD2" at (43.941, 32.142, 46.509),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 193, " N  " at (38.655, 34.105, 44.265),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 194, " CA " at (38.152, 34.964, 43.177),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 195, " C  " at (39.184, 35.247, 42.072),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 196, " O  " at (38.833, 35.268, 40.895),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 197, " CB " at (37.608, 36.260, 43.812),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 198, " CG " at (36.918, 37.306, 42.907),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 199, " CD1" at (37.881, 38.169, 42.088),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 200, " CD2" at (35.872, 36.697, 41.976),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 201, " HN " at (38.431, 34.381, 45.215),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 202, " N  " at (40.470, 35.388, 42.413),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 203, " CA " at (41.567, 35.552, 41.443),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 204, " C  " at (41.603, 34.460, 40.355),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 205, " O  " at (41.844, 34.770, 39.187),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 206, " CB " at (42.897, 35.641, 42.214),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 207, " CG " at (43.391, 34.290, 42.763),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 208, " CD " at (44.437, 34.476, 43.861),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 209, " CE " at (45.018, 33.124, 44.287),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 210, " NZ " at (46.256, 32.783, 43.554),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 211, " HN " at (40.690, 35.364, 43.399),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 212, " HZ1" at (46.735, 32.006, 44.010),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 213, " HZ2" at (46.087, 32.530, 42.587),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 214, " HZ3" at (46.884, 33.579, 43.560),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 215, " N  " at (41.317, 33.205, 40.706),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 216, " CA " at (41.249, 32.090, 39.755),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 217, " C  " at (39.920, 32.073, 38.977),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 218, " O  " at (39.909, 31.678, 37.815),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 219, " CB " at (41.488, 30.761, 40.496),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 220, " CG " at (42.942, 30.573, 40.954),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 221, " CD " at (43.138, 29.272, 41.755),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 222, " OE1" at (42.246, 28.729, 42.412),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 223, " OE2" at (44.242, 28.720, 41.951),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 224, " HN " at (41.040, 33.028, 41.667),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 225, " HE2" at (44.342, 27.963, 42.424),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 226, " N  " at (38.815, 32.560, 39.558),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 227, " CA " at (37.531, 32.715, 38.856),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 228, " C  " at (37.614, 33.817, 37.784),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 229, " O  " at (37.126, 33.657, 36.668),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 230, " CB " at (36.416, 33.048, 39.859),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 231, " HN " at (38.889, 32.922, 40.498),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 232, " N  " at (38.309, 34.909, 38.111),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 233, " CA " at (38.682, 35.992, 37.197),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 234, " C  " at (39.506, 35.449, 36.014),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 235, " O  " at (39.205, 35.728, 34.852),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 236, " CB " at (39.411, 37.044, 38.066),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 237, " CG " at (40.006, 38.303, 37.418),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 238, " CD1" at (41.242, 38.035, 36.558),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 239, " CD2" at (38.970, 39.049, 36.596),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 240, " HN " at (38.641, 34.975, 39.070),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 241, " N  " at (40.498, 34.599, 36.298),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 242, " CA " at (41.286, 33.924, 35.266),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 243, " C  " at (40.469, 32.915, 34.422),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 244, " O  " at (40.764, 32.740, 33.235),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 245, " CB " at (42.499, 33.285, 35.946),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 246, " HN " at (40.717, 34.417, 37.269),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 247, " N  " at (39.428, 32.297, 34.989),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 248, " CA " at (38.470, 31.474, 34.246),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 249, " C  " at (37.568, 32.308, 33.316),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 250, " O  " at (37.419, 31.952, 32.150),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 251, " CB " at (37.654, 30.618, 35.226),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 252, " HN " at (39.308, 32.372, 35.992),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 253, " N  " at (37.043, 33.453, 33.767),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 254, " CA " at (36.276, 34.366, 32.911),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 255, " C  " at (37.078, 34.874, 31.702),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 256, " O  " at (36.573, 34.842, 30.578),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 257, " HN " at (37.164, 33.682, 34.750),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 258, " N  " at (38.341, 35.280, 31.895),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 259, " CA " at (39.196, 35.803, 30.814),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 260, " C  " at (39.554, 34.734, 29.781),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 261, " O  " at (39.541, 34.985, 28.575),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 262, " CB " at (40.461, 36.453, 31.389),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 263, " OG " at (41.338, 35.510, 31.969),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 264, " HN " at (38.718, 35.261, 32.836),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 265, " HG " at (40.859, 34.642, 32.099),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 266, " N  " at (39.838, 33.512, 30.243),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 267, " CA " at (40.035, 32.330, 29.410),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 268, " C  " at (38.786, 31.964, 28.601),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 269, " O  " at (38.890, 31.607, 27.424),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 270, " CB " at (40.382, 31.162, 30.333),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 271, " HN " at (39.869, 33.392, 31.251),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 272, " N  " at (37.618, 32.068, 29.231),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 273, " CA " at (36.372, 31.634, 28.639),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 274, " C  " at (35.880, 32.571, 27.533),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 275, " O  " at (35.552, 32.083, 26.451),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 276, " CB " at (35.370, 31.423, 29.767),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 277, " HN " at (37.613, 32.318, 30.214),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 278, " N  " at (35.891, 33.903, 27.725),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 279, " CA " at (35.472, 34.811, 26.643),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 280, " C  " at (36.400, 34.743, 25.422),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 281, " O  " at (35.969, 35.041, 24.308),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 282, " CB " at (35.236, 36.257, 27.127),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 283, " CG " at (36.422, 37.129, 27.532),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 284, " CD1" at (36.470, 37.687, 28.827),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 285, " CD2" at (37.410, 37.499, 26.595),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 286, " CE1" at (37.496, 38.584, 29.179),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 287, " CE2" at (38.455, 38.365, 26.962),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 288, " CZ " at (38.504, 38.902, 28.256),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 289, " HN " at (36.187, 34.282, 28.623),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 290, " N  " at (37.663, 34.339, 25.600),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 291, " CA " at (38.574, 34.055, 24.492),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 292, " C  " at (38.117, 32.831, 23.676),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 293, " O  " at (37.835, 32.964, 22.486),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 294, " CB " at (40.003, 33.882, 25.026),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 295, " CG " at (41.010, 33.474, 23.949),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 296, " OD1" at (42.003, 32.804, 24.319),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 297, " OD2" at (40.834, 33.851, 22.764),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 298, " HN " at (37.980, 34.170, 26.547),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 299, " HD2" at (41.472, 33.570, 22.090),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 300, " N  " at (38.013, 31.649, 24.293),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 301, " CA " at (37.717, 30.396, 23.566),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 302, " C  " at (36.249, 30.192, 23.166),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 303, " O  " at (35.980, 29.347, 22.311),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 304, " CB " at (38.304, 29.221, 24.358),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 305, " CG " at (39.839, 29.221, 24.496),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 306, " CD " at (40.626, 29.040, 23.186),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 307, " CE " at (40.862, 30.354, 22.431),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 308, " NZ " at (41.677, 30.154, 21.215),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 309, " HN " at (38.210, 31.606, 25.291),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 310, " HZ1" at (41.309, 29.421, 20.612),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 311, " HZ2" at (41.687, 31.011, 20.672),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 312, " HZ3" at (42.635, 29.937, 21.476),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 313, " N  " at (35.323, 31.000, 23.693),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 314, " CA " at (33.926, 31.060, 23.250),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 315, " C  " at (33.726, 31.631, 21.828),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 316, " O  " at (32.730, 31.303, 21.191),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 317, " CB " at (33.149, 31.925, 24.265),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 318, " CG " at (31.619, 31.978, 24.095),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 319, " CD1" at (30.935, 30.610, 24.009),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 320, " CD2" at (31.026, 32.693, 25.307),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 321, " HN " at (35.601, 31.590, 24.465),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 322, " N  " at (34.618, 32.503, 21.352),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 323, " CA " at (34.288, 33.585, 20.408),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 324, " C  " at (34.870, 33.441, 18.979),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 325, " O  " at (36.058, 33.722, 18.790),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 326, " CB " at (34.783, 34.881, 21.059),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 327, " CG " at (34.794, 36.084, 20.119),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 328, " OD2" at (34.001, 36.140, 19.158),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 329, " OD1" at (35.608, 37.002, 20.378),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 330, " HN " at (35.486, 32.609, 21.859),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 331, " HD2" at (33.362, 35.406, 18.971),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 332, " N  " at (34.058, 33.116, 17.951),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 333, " CA " at (34.492, 33.013, 16.559),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 334, " C  " at (34.093, 34.198, 15.663),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 335, " O  " at (34.531, 34.239, 14.512),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 336, " CB " at (33.833, 31.719, 16.088),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 337, " CG " at (32.451, 31.835, 16.728),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 338, " CD " at (32.739, 32.508, 18.066),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 339, " N  " at (33.244, 35.139, 16.106),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 340, " CA " at (32.960, 36.360, 15.315),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 341, " C  " at (33.960, 37.483, 15.701),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 342, " O  " at (34.111, 38.448, 14.952),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 343, " CB " at (31.456, 36.759, 15.295),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 344, " CG " at (30.872, 37.378, 16.585),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 345, " OD2" at (29.677, 37.618, 16.844),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 346, " OD1" at (31.585, 37.669, 17.540),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 347, " HN " at (32.902, 35.059, 17.066),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 348, " HD2" at (29.349, 37.978, 17.642),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 349, " N  " at (34.765, 37.265, 16.752),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 350, " CA " at (35.939, 38.045, 17.191),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 351, " C  " at (35.572, 39.432, 17.720),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 352, " O  " at (36.060, 40.473, 17.269),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 353, " CB " at (37.073, 38.022, 16.142),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 354, " CG " at (37.420, 36.638, 15.555),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 355, " CD " at (37.543, 35.460, 16.522),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 356, " CE " at (38.564, 35.695, 17.633),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 357, " NZ " at (38.716, 34.482, 18.461),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 358, " HN " at (34.466, 36.534, 17.394),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 359, " HZ1" at (39.213, 34.694, 19.326),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 360, " HZ2" at (37.804, 34.106, 18.720),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 361, " HZ3" at (39.197, 33.745, 17.951),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 362, " N  " at (34.697, 39.437, 18.720),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 363, " CA " at (34.315, 40.640, 19.456),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 364, " C  " at (34.234, 40.445, 20.981),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 365, " O  " at (34.114, 41.429, 21.715),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 366, " CB " at (32.990, 41.147, 18.863),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 367, " CG " at (31.783, 40.207, 18.989),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 368, " OD2" at (30.775, 40.310, 18.244),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 369, " OD1" at (31.682, 39.278, 19.813),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 370, " HN " at (34.321, 38.536, 18.992),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 371, " HD2" at (30.701, 40.999, 17.563),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 372, " N  " at (34.287, 39.209, 21.474),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 373, " CA " at (34.117, 38.870, 22.891),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 374, " C  " at (32.806, 39.406, 23.487),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 375, " O  " at (32.705, 39.614, 24.694),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 376, " HN " at (34.491, 38.447, 20.837),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 377, " N  " at (31.811, 39.670, 22.636),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 378, " CA " at (30.484, 40.186, 22.951),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 379, " C  " at (29.460, 39.172, 22.438),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 380, " O  " at (29.376, 38.896, 21.235),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 381, " CB " at (30.262, 41.604, 22.392),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 382, " CG2" at (30.447, 42.648, 23.477),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 383, " OG1" at (31.190, 41.983, 21.392),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 384, " HN " at (31.972, 39.457, 21.655),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 385, " HG1" at (32.123, 41.689, 21.639),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 386, " N  " at (28.755, 38.546, 23.375),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 387, " CA " at (28.582, 37.093, 23.413),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 388, " C  " at (27.094, 36.729, 23.293),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 389, " O  " at (26.278, 37.102, 24.143),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 390, " CB " at (29.224, 36.507, 24.693),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 391, " CG " at (30.665, 36.974, 25.013),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 392, " CD1" at (31.073, 36.600, 26.433),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 393, " CD2" at (31.685, 36.380, 24.045),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 394, " HN " at (28.686, 39.021, 24.265),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 395, " N  " at (26.783, 36.002, 22.224),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 396, " CA " at (25.520, 36.091, 21.497),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 397, " C  " at (24.918, 34.725, 21.126),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 398, " O  " at (25.490, 33.674, 21.412),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 399, " CB " at (25.779, 36.952, 20.256),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 400, " CG " at (26.901, 36.403, 19.400),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 401, " OD2" at (28.029, 36.943, 19.498),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 402, " OD1" at (26.678, 35.412, 18.671),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 403, " HN " at (27.568, 35.664, 21.692),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 404, " HD2" at (28.805, 36.592, 18.955),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 405, " N  " at (23.773, 34.729, 20.436),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 406, " CA " at (23.005, 33.528, 20.078),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 407, " C  " at (23.740, 32.520, 19.172),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 408, " O  " at (23.311, 31.365, 19.083),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 409, " CB " at (21.686, 33.984, 19.437),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 410, " HN " at (23.357, 35.627, 20.189),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 411, " N  " at (24.857, 32.915, 18.537),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 412, " CA " at (25.780, 32.035, 17.806),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 413, " C  " at (27.163, 31.894, 18.464),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 414, " O  " at (27.898, 30.987, 18.081),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 415, " CB " at (25.910, 32.472, 16.333),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 416, " CG " at (24.614, 32.373, 15.510),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 417, " CD " at (23.909, 31.009, 15.551),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 418, " CE " at (24.841, 29.839, 15.210),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 419, " NZ " at (24.100, 28.565, 15.104),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 420, " HN " at (25.111, 33.891, 18.633),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 421, " HZ1" at (24.726, 27.763, 15.135),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 422, " HZ2" at (23.392, 28.472, 15.827),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 423, " HZ3" at (23.659, 28.501, 14.191),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 424, " N  " at (27.511, 32.701, 19.463),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 425, " CA " at (28.673, 32.430, 20.324),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 426, " C  " at (28.314, 31.296, 21.286),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 427, " O  " at (28.935, 30.235, 21.288),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 428, " CB " at (29.139, 33.700, 21.059),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 429, " CG " at (30.581, 34.170, 20.791),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 430, " CD " at (30.600, 35.546, 20.098),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 431, " OE1" at (30.254, 35.693, 18.915),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 432, " OE2" at (30.715, 36.659, 20.657),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 433, " HN " at (26.896, 33.466, 19.710),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 434, " HE2" at (30.727, 37.436, 20.236),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 435, " N  " at (27.220, 31.477, 22.032),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 436, " CA " at (26.583, 30.471, 22.881),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 437, " C  " at (25.689, 29.502, 22.070),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 438, " O  " at (24.737, 28.947, 22.617),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 439, " CB " at (25.847, 31.164, 24.053),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 440, " CG " at (26.804, 31.768, 25.104),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 441, " CD1" at (27.132, 33.242, 24.839),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 442, " CD2" at (26.199, 31.693, 26.508),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 443, " HN " at (26.723, 32.356, 21.915),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 444, " N  " at (26.032, 29.233, 20.799),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 445, " CA " at (25.356, 28.265, 19.901),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 446, " C  " at (25.182, 26.890, 20.553),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 447, " O  " at (26.139, 26.133, 20.697),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 448, " CB " at (26.120, 28.137, 18.559),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 449, " CG " at (27.653, 27.962, 18.657),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 450, " CD " at (28.321, 27.937, 17.273),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 451, " CE " at (29.831, 28.172, 17.389),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 452, " NZ " at (30.504, 28.090, 16.068),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 453, " HN " at (26.889, 29.663, 20.467),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 454, " HZ1" at (30.586, 27.125, 15.762),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 455, " HZ2" at (30.021, 28.630, 15.361),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 456, " HZ3" at (31.461, 28.434, 16.137),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 457, " N  " at (23.979, 26.540, 20.982),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 458, " CA " at (23.696, 25.285, 21.676),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 459, " C  " at (24.094, 25.251, 23.160),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 460, " O  " at (23.800, 24.257, 23.821),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 461, " HN " at (23.202, 27.159, 20.770),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 462, " N  " at (24.677, 26.322, 23.720),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 463, " CA " at (25.037, 26.411, 25.149),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 464, " C  " at (23.842, 26.843, 25.992),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 465, " O  " at (23.581, 26.290, 27.062),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 466, " CB " at (26.233, 27.363, 25.386),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 467, " CG " at (27.610, 26.966, 24.807),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 468, " CD " at (27.578, 26.753, 23.289),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 469, " NE " at (28.857, 27.006, 22.605),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 470, " CZ " at (29.387, 26.251, 21.657),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 471, " NH1" at (28.756, 25.261, 21.107),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 472, " NH2" at (30.545, 26.551, 21.167),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 473, " HN " at (24.786, 27.147, 23.139),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 474, " HE " at (29.389, 27.822, 22.863),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 475, "1HH1" at (27.764, 25.181, 21.266),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 476, "2HH1" at (29.156, 24.853, 20.269),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 477, "1HH2" at (31.115, 27.247, 21.620),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 478, "2HH2" at (31.027, 25.830, 20.635),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 479, " N  " at (23.102, 27.826, 25.497),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 480, " CA " at (22.061, 28.547, 26.237),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 481, " C  " at (20.957, 28.983, 25.270),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 482, " O  " at (21.237, 29.257, 24.105),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 483, " CB " at (22.754, 29.703, 27.014),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 484, " CG1" at (22.239, 31.114, 26.722),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 485, " CG2" at (22.682, 29.435, 28.520),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 486, " HN " at (23.353, 28.203, 24.590),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 487, " N  " at (19.699, 29.005, 25.713),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 488, " CA " at (18.580, 29.559, 24.930),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 489, " C  " at (18.704, 31.073, 24.756),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 490, " O  " at (19.146, 31.750, 25.676),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 491, " CB " at (17.257, 29.285, 25.650),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 492, " OG " at (17.051, 27.906, 25.822),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 493, " HN " at (19.495, 28.650, 26.644),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 494, " HG " at (17.868, 27.403, 25.537),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 495, " N  " at (18.219, 31.653, 23.655),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 496, " CA " at (18.211, 33.118, 23.450),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 497, " C  " at (17.437, 33.888, 24.558),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 498, " O  " at (17.742, 35.052, 24.824),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 499, " CB " at (17.720, 33.424, 22.016),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 500, " CG " at (17.985, 34.868, 21.539),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 501, " CD " at (17.766, 35.072, 20.024),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 502, " OE1" at (17.097, 34.232, 19.376),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 503, " OE2" at (18.216, 36.109, 19.462),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 504, " HN " at (17.975, 31.064, 22.860),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 505, " HE2" at (18.092, 36.237, 18.553),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 506, " N  " at (16.535, 33.208, 25.287),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 507, " CA " at (15.919, 33.676, 26.540),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 508, " C  " at (16.875, 33.679, 27.762),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 509, " O  " at (16.964, 34.692, 28.468),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 510, " CB " at (14.687, 32.805, 26.820),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 511, " HN " at (16.289, 32.284, 24.963),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 512, " N  " at (17.625, 32.591, 27.989),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 513, " CA " at (18.725, 32.553, 28.967),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 514, " C  " at (19.836, 33.550, 28.601),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 515, " O  " at (20.443, 34.138, 29.482),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 516, " CB " at (19.342, 31.140, 29.062),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 517, " CG " at (18.832, 30.231, 30.181),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 518, " OD1" at (18.120, 30.694, 31.101),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 519, " OD2" at (19.184, 29.030, 30.175),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 520, " HN " at (17.552, 31.829, 27.336),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 521, " HD2" at (18.839, 28.449, 30.886),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 522, " N  " at (20.105, 33.791, 27.318),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 523, " CA " at (21.153, 34.703, 26.839),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 524, " C  " at (20.963, 36.139, 27.366),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 525, " O  " at (21.929, 36.779, 27.783),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 526, " CB " at (21.135, 34.650, 25.302),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 527, " CG " at (22.260, 35.410, 24.587),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 528, " CD1" at (23.578, 34.644, 24.653),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 529, " CD2" at (21.866, 35.581, 23.120),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 530, " HN " at (19.641, 33.201, 26.634),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 531, " N  " at (19.703, 36.599, 27.442),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 532, " CA " at (19.282, 37.882, 28.036),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 533, " C  " at (18.949, 37.832, 29.541),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 534, " O  " at (18.502, 38.831, 30.106),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 535, " CB " at (18.174, 38.520, 27.181),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 536, " CG " at (16.856, 37.743, 27.111),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 537, " CD " at (15.882, 38.442, 26.156),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 538, " CE " at (14.612, 37.605, 25.998),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 539, " NZ " at (13.646, 38.277, 25.102),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 540, " HN " at (18.979, 35.993, 27.079),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 541, " HZ1" at (14.043, 38.401, 24.175),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 542, " HZ2" at (12.808, 37.722, 24.963),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 543, " HZ3" at (13.337, 39.173, 25.474),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 544, " N  " at (19.218, 36.704, 30.218),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 545, " CA " at (19.294, 36.611, 31.694),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 546, " C  " at (20.636, 37.145, 32.188),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 547, " O  " at (20.705, 37.936, 33.132),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 548, " CB " at (19.134, 35.136, 32.109),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 549, " CG " at (19.139, 34.843, 33.617),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 550, " CD " at (19.036, 33.330, 33.903),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 551, " CE " at (20.162, 32.496, 33.268),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 552, " NZ " at (19.912, 31.043, 33.372),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 553, " HN " at (19.531, 35.903, 29.680),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 554, " HZ1" at (19.762, 30.744, 34.328),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 555, " HZ2" at (19.095, 30.751, 32.835),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 556, " HZ3" at (20.707, 30.528, 33.004),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 557, " N  " at (21.704, 36.680, 31.538),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 558, " CA " at (23.073, 36.775, 32.041),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 559, " C  " at (23.525, 38.237, 32.209),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 560, " O  " at (24.086, 38.599, 33.241),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 561, " CB " at (24.036, 36.018, 31.099),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 562, " CG " at (23.616, 34.655, 30.513),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 563, " CD1" at (24.718, 34.093, 29.619),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 564, " CD2" at (23.295, 33.605, 31.570),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 565, " HN " at (21.532, 36.037, 30.780),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 566, " N  " at (23.262, 39.069, 31.201),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 567, " CA " at (23.695, 40.471, 31.060),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 568, " C  " at (23.006, 41.474, 32.027),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 569, " O  " at (21.851, 41.262, 32.405),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 570, " CB " at (23.468, 40.800, 29.574),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 571, " CG " at (23.441, 42.278, 29.170),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 572, " OD2" at (24.507, 42.941, 29.088),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 573, " OD1" at (22.325, 42.752, 28.883),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 574, " HN " at (22.750, 38.684, 30.421),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 575, " HD2" at (25.378, 42.538, 29.296),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 576, " N  " at (23.676, 42.567, 32.455),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 577, " CA " at (23.078, 43.598, 33.313),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 578, " C  " at (22.443, 44.791, 32.586),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 579, " O  " at (21.407, 45.274, 33.039),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 580, " CB " at (24.237, 44.085, 34.180),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 581, " CG " at (25.469, 43.927, 33.288),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 582, " CD " at (25.129, 42.697, 32.449),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 583, " N  " at (23.043, 45.308, 31.510),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 584, " CA " at (22.674, 46.594, 30.892),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 585, " C  " at (21.695, 46.486, 29.699),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 586, " O  " at (21.569, 47.409, 28.888),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 587, " CB " at (23.939, 47.421, 30.600),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 588, " CG " at (24.990, 46.851, 29.640),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 589, " OD1" at (25.248, 45.619, 29.576),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 590, " OD2" at (25.654, 47.648, 28.946),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 591, " HN " at (23.862, 44.849, 31.137),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 592, " HD2" at (26.312, 47.275, 28.323),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 593, " N  " at (20.985, 45.357, 29.614),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 594, " CA " at (19.952, 45.017, 28.635),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 595, " C  " at (20.407, 45.082, 27.171),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 596, " O  " at (19.681, 45.590, 26.314),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 597, " CB " at (18.624, 45.751, 28.922),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 598, " CG " at (18.007, 45.330, 30.242),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 599, " HN " at (21.209, 44.638, 30.287),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 600, " ND2" at (17.667, 44.083, 30.388),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 601, " OD1" at (17.844, 46.119, 31.158),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 602, "1HD2" at (17.479, 43.762, 31.341),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 603, "2HD2" at (17.697, 43.417, 29.626),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 604, " N  " at (21.590, 44.556, 26.851),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 605, " CA " at (21.955, 44.324, 25.424),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 606, " C  " at (21.087, 43.206, 24.814),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 607, " O  " at (20.877, 43.156, 23.601),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 608, " CB " at (23.430, 43.886, 25.161),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 609, " CG " at (24.568, 44.348, 26.072),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 610, " OD1" at (25.749, 43.925, 26.016),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 611, " OD2" at (24.363, 45.023, 27.095),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 612, " HN " at (22.154, 44.157, 27.607),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 613, " HD2" at (25.096, 45.312, 27.637),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 614, " N  " at (20.681, 42.257, 25.668),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 615, " CA " at (20.314, 40.895, 25.303),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 616, " C  " at (21.492, 39.900, 25.325),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 617, " O  " at (21.265, 38.719, 25.064),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 618, " HN " at (20.838, 42.411, 26.656),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 619, " N  " at (22.720, 40.369, 25.617),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 620, " CA " at (24.018, 39.676, 25.459),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 621, " C  " at (25.135, 40.208, 26.382),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 622, " O  " at (25.103, 41.335, 26.887),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 623, " CB " at (24.553, 39.773, 24.019),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 624, " CG2" at (23.779, 38.884, 23.057),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 625, " OG1" at (24.542, 41.099, 23.548),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 626, " HN " at (22.776, 41.342, 25.864),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 627, " HG1" at (23.616, 41.497, 23.607),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 628, " N  " at (26.157, 39.373, 26.599),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 629, " CA " at (27.332, 39.673, 27.433),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 630, " C  " at (28.478, 40.347, 26.654),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 631, " O  " at (28.442, 40.487, 25.435),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 632, " CB " at (27.800, 38.380, 28.140),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 633, " CG " at (26.834, 37.839, 29.207),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 634, " CD1" at (27.347, 36.487, 29.695),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 635, " CD2" at (26.785, 38.744, 30.437),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 636, " HN " at (26.160, 38.504, 26.081),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 637, " N  " at (29.519, 40.726, 27.389),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 638, " CA " at (30.710, 41.468, 26.954),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 639, " C  " at (32.011, 40.841, 27.516),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 640, " O  " at (31.956, 40.108, 28.507),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 641, " CB " at (30.591, 42.932, 27.435),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 642, " CG " at (29.390, 43.720, 26.882),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 643, " OD2" at (28.220, 43.515, 27.308),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 644, " OD1" at (29.632, 44.609, 26.034),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 645, " HN " at (29.454, 40.537, 28.377),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 646, " HD2" at (27.458, 44.023, 26.974),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 647, " N  " at (33.200, 41.233, 27.015),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 648, " CA " at (34.500, 40.912, 27.656),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 649, " C  " at (34.614, 41.514, 29.064),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 650, " O  " at (35.356, 41.012, 29.903),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 651, " CB " at (35.686, 41.395, 26.802),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 652, " CG " at (35.738, 40.783, 25.394),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 653, " CD " at (37.006, 41.153, 24.603),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 654, " CE " at (36.985, 42.596, 24.072),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 655, " NZ " at (36.354, 42.716, 22.734),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 656, " HN " at (33.204, 41.774, 26.158),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 657, " HZ1" at (35.443, 42.266, 22.686),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 658, " HZ2" at (36.207, 43.694, 22.491),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 659, " HZ3" at (36.938, 42.308, 22.004),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 660, " N  " at (33.839, 42.567, 29.332),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 661, " CA " at (33.554, 43.089, 30.677),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 662, " C  " at (32.690, 42.158, 31.527),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 663, " O  " at (32.920, 42.053, 32.723),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 664, " CB " at (32.828, 44.435, 30.539),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 665, " CG " at (33.725, 45.582, 30.059),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 666, " CD " at (34.900, 45.926, 30.992),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 667, " CE " at (34.476, 46.021, 32.467),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 668, " NZ " at (35.561, 46.570, 33.311),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 669, " HN " at (33.370, 42.988, 28.541),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 670, " HZ1" at (35.629, 47.571, 33.151),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 671, " HZ2" at (35.388, 46.416, 34.301),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 672, " HZ3" at (36.449, 46.155, 33.053),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 673, " N  " at (31.697, 41.497, 30.936),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 674, " CA " at (30.618, 40.844, 31.673),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 675, " C  " at (30.779, 39.325, 31.804),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 676, " O  " at (30.453, 38.795, 32.854),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 677, " CB " at (29.255, 41.257, 31.106),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 678, " CG " at (28.950, 42.770, 31.242),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 679, " CD " at (27.858, 43.244, 30.251),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 680, " OE2" at (27.145, 42.456, 29.608),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 681, " OE1" at (27.671, 44.421, 29.872),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 682, " HN " at (31.633, 41.536, 29.929),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 683, " HE2" at (27.255, 41.481, 29.717),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 684, " N  " at (31.438, 38.632, 30.876),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 685, " CA " at (32.006, 37.295, 31.158),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 686, " C  " at (33.148, 37.370, 32.200),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 687, " O  " at (33.622, 36.340, 32.674),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 688, " CB " at (32.464, 36.580, 29.869),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 689, " CG " at (31.877, 35.182, 29.686),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 690, " CD1" at (30.529, 35.045, 29.313),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 691, " CD2" at (32.648, 34.028, 29.925),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 692, " CE1" at (29.926, 33.776, 29.227),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 693, " CE2" at (32.060, 32.750, 29.806),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 694, " CZ " at (30.695, 32.622, 29.477),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 695, " OH " at (30.101, 31.395, 29.453),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 696, " HN " at (31.706, 39.090, 30.008),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 697, " HH " at (29.285, 31.408, 30.032),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 698, " N  " at (33.550, 38.592, 32.600),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 699, " CA " at (34.490, 38.880, 33.685),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 700, " C  " at (33.831, 39.483, 34.952),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 701, " O  " at (34.515, 39.727, 35.949),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 702, " CB " at (35.609, 39.773, 33.114),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 703, " CG " at (36.986, 39.465, 33.715),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 704, " CD1" at (37.461, 38.066, 33.312),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 705, " CD2" at (38.034, 40.456, 33.219),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 706, " HN " at (33.157, 39.386, 32.109),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 707, " N  " at (32.508, 39.691, 34.940),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 708, " CA " at (31.774, 40.346, 36.030),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 709, " C  " at (30.468, 39.642, 36.450),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 710, " O  " at (30.192, 39.569, 37.648),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 711, " CB " at (31.521, 41.797, 35.637),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 712, " HN " at (32.004, 39.470, 34.093),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 713, " N  " at (29.733, 39.022, 35.520),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 714, " CA " at (28.628, 38.110, 35.814),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 715, " C  " at (29.127, 36.831, 36.504),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 716, " O  " at (28.469, 36.324, 37.407),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 717, " CB " at (27.893, 37.789, 34.508),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 718, " HN " at (29.992, 39.122, 34.548),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 719, " N  " at (30.332, 36.363, 36.147),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 720, " CA " at (31.088, 35.322, 36.879),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 721, " C  " at (31.249, 35.695, 38.353),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 722, " O  " at (30.882, 34.922, 39.231),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 723, " CB " at (32.471, 35.061, 36.222),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 724, " CG1" at (33.223, 36.323, 35.782),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 725, " CG2" at (33.439, 34.294, 37.138),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 726, " HN " at (30.790, 36.803, 35.359),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 727, " N  " at (31.747, 36.899, 38.621),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 728, " CA " at (32.056, 37.402, 39.955),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 729, " C  " at (30.777, 37.751, 40.752),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 730, " O  " at (30.708, 37.517, 41.959),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 731, " CB " at (33.072, 38.537, 39.748),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 732, " CG " at (33.348, 39.456, 40.945),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 733, " CD " at (32.609, 40.786, 40.813),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 734, " OE1" at (31.875, 41.178, 41.754),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 735, " OE2" at (32.726, 41.444, 39.751),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 736, " HN " at (32.002, 37.476, 37.837),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 737, " HE2" at (32.276, 42.262, 39.651),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 738, " N  " at (29.718, 38.209, 40.084),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 739, " CA " at (28.379, 38.380, 40.651),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 740, " C  " at (27.696, 37.049, 41.013),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 741, " O  " at (26.901, 36.999, 41.957),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 742, " CB " at (27.527, 39.152, 39.639),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 743, " HN " at (29.833, 38.433, 39.103),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 744, " N  " at (27.997, 35.949, 40.315),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 745, " CA " at (27.484, 34.611, 40.629),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 746, " C  " at (28.463, 33.764, 41.480),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 747, " O  " at (28.128, 32.649, 41.879),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 748, " CB " at (27.057, 33.939, 39.314),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 749, " CG " at (26.066, 32.781, 39.521),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 750, " CD " at (25.013, 32.729, 38.421),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 751, " HN " at (28.590, 36.042, 39.495),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 752, " NE2" at (24.141, 33.709, 38.330),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 753, " OE1" at (24.970, 31.821, 37.609),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 754, "1HE2" at (23.416, 33.647, 37.623),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 755, "2HE2" at (24.157, 34.482, 38.992),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 756, " N  " at (29.640, 34.313, 41.798),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 757, " CA " at (30.715, 33.633, 42.530),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 758, " C  " at (30.303, 33.109, 43.901),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 759, " O  " at (30.401, 31.911, 44.148),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 760, " CB " at (31.949, 34.539, 42.629),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 761, " CG " at (33.133, 33.932, 43.366),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 762, " CD1" at (33.764, 34.640, 44.408),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 763, " CD2" at (33.625, 32.667, 42.991),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 764, " CE1" at (34.881, 34.089, 45.059),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 765, " CE2" at (34.730, 32.111, 43.654),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 766, " CZ " at (35.364, 32.822, 44.684),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 767, " HN " at (29.865, 35.206, 41.384),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 768, " N  " at (29.833, 33.980, 44.798),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 769, " CA " at (29.457, 33.565, 46.154),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 770, " C  " at (28.233, 32.650, 46.111),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 771, " O  " at (28.176, 31.677, 46.861),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 772, " CB " at (29.258, 34.795, 47.059),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 773, " CG " at (30.449, 35.772, 46.997),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 774, " CD " at (30.379, 36.879, 48.056),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 775, " CE " at (30.733, 36.327, 49.438),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 776, " NZ " at (30.756, 37.396, 50.456),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 777, " HN " at (29.628, 34.924, 44.496),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 778, " HZ1" at (31.409, 38.126, 50.189),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 779, " HZ2" at (29.850, 37.842, 50.589),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 780, " HZ3" at (31.113, 37.051, 51.344),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 781, " N  " at (27.289, 32.920, 45.208),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 782, " CA " at (26.040, 32.179, 45.055),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 783, " C  " at (26.211, 30.704, 44.631),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 784, " O  " at (25.412, 29.854, 45.029),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 785, " CB " at (25.185, 32.925, 44.029),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 786, " HN " at (27.403, 33.774, 44.677),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 787, " N  " at (27.218, 30.376, 43.818),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 788, " CA " at (27.501, 28.980, 43.450),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 789, " C  " at (27.909, 28.115, 44.658),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 790, " O  " at (27.533, 26.943, 44.714),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 791, " CB " at (28.553, 28.971, 42.344),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 792, " HN " at (27.818, 31.109, 43.458),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 793, " N  " at (28.553, 28.694, 45.678),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 794, " CA " at (28.717, 28.057, 46.977),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 795, " C  " at (27.378, 28.097, 47.751),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 796, " O  " at (26.795, 29.174, 47.853),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 797, " CB " at (29.825, 28.799, 47.737),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 798, " CG " at (30.417, 27.945, 48.828),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 799, " HN " at (28.778, 29.677, 45.608),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 800, " ND2" at (31.719, 27.797, 48.841),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 801, " OD1" at (29.739, 27.361, 49.664),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 802, "1HD2" at (32.158, 27.289, 49.594),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 803, "2HD2" at (32.298, 28.254, 48.147),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 804, " N  " at (26.869, 26.996, 48.339),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 805, " CA " at (25.633, 27.016, 49.145),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 806, " C  " at (25.728, 27.843, 50.442),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 807, " O  " at (24.714, 28.246, 51.012),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 808, " CB " at (25.364, 25.544, 49.476),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 809, " CG " at (26.752, 24.913, 49.423),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 810, " CD " at (27.410, 25.651, 48.270),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 811, " N  " at (26.948, 28.085, 50.915),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 812, " CA " at (27.284, 28.689, 52.201),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 813, " C  " at (28.407, 29.737, 52.010),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 814, " O  " at (28.724, 30.158, 50.889),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 815, " CB " at (27.728, 27.552, 53.159),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 816, " CG " at (26.662, 26.502, 53.497),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 817, " OD2" at (26.997, 25.287, 53.510),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 818, " OD1" at (25.535, 26.891, 53.883),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 819, " HN " at (27.735, 27.798, 50.345),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 820, " HD2" at (26.327, 24.587, 53.744),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 821, " N  " at (29.045, 30.121, 53.119),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 822, " CA " at (30.448, 30.535, 53.146),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 823, " C  " at (30.743, 31.882, 52.440),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 824, " O  " at (29.827, 32.674, 52.188),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 825, " CB " at (31.269, 29.324, 52.657),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 826, " CG " at (32.641, 29.271, 53.296),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 827, " HN " at (28.632, 29.904, 54.015),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 828, " ND2" at (32.696, 28.749, 54.491),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 829, " OD1" at (33.634, 29.722, 52.739),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 830, "1HD2" at (33.602, 28.514, 54.888),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 831, "2HD2" at (31.854, 28.380, 54.915),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 832, " N  " at (32.032, 32.173, 52.211),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 833, " CA " at (32.550, 33.507, 51.875),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 834, " C  " at (33.849, 33.515, 51.027),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 835, " O  " at (34.974, 33.543, 51.550),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 836, " CB " at (32.747, 34.243, 53.210),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 837, " CG " at (33.021, 35.737, 53.071),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 838, " OD2" at (32.875, 36.291, 51.959),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 839, " OD1" at (33.303, 36.368, 54.119),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 840, " HN " at (32.723, 31.456, 52.397),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 841, " HD2" at (33.031, 37.268, 51.849),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 842, " N  " at (33.699, 33.577, 49.698),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 843, " CA " at (34.756, 33.981, 48.762),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 844, " C  " at (35.676, 32.878, 48.228),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 845, " O  " at (36.759, 33.188, 47.722),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 846, " HN " at (32.764, 33.433, 49.327),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 847, " N  " at (35.259, 31.616, 48.339),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 848, " CA " at (36.007, 30.417, 47.896),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 849, " C  " at (35.084, 29.325, 47.328),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 850, " O  " at (33.959, 29.157, 47.804),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 851, " CB " at (36.858, 29.815, 49.029),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 852, " CG2" at (37.697, 30.825, 49.813),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 853, " OG1" at (36.080, 29.121, 49.975),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 854, " HN " at (34.368, 31.459, 48.799),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 855, " HG1" at (36.449, 29.244, 50.907),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 856, " N  " at (35.552, 28.554, 46.337),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 857, " CA " at (34.807, 27.483, 45.628),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 858, " C  " at (35.718, 26.321, 45.178),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 859, " O  " at (36.598, 26.495, 44.343),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 860, " CB " at (34.029, 28.116, 44.436),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 861, " CG1" at (32.715, 28.727, 44.976),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 862, " CG2" at (33.735, 27.152, 43.274),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 863, " CD1" at (31.651, 29.085, 43.940),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 864, " HN " at (36.456, 28.806, 45.946),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 865, " N  " at (35.508, 25.117, 45.713),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 866, " CA " at (36.067, 23.854, 45.186),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 867, " C  " at (35.278, 23.394, 43.929),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 868, " O  " at (34.173, 23.878, 43.683),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 869, " CB " at (36.050, 22.829, 46.341),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 870, " CG " at (36.965, 21.604, 46.195),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 871, " OD2" at (37.520, 21.132, 47.222),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 872, " OD1" at (37.046, 21.011, 45.108),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 873, " HN " at (34.806, 25.058, 46.444),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 874, " HD2" at (37.380, 21.559, 48.109),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 875, " N  " at (35.792, 22.450, 43.133),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 876, " CA " at (35.101, 21.960, 41.927),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 877, " C  " at (33.726, 21.343, 42.239),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 878, " O  " at (32.786, 21.495, 41.457),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 879, " CB " at (36.009, 20.981, 41.171),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 880, " HN " at (36.641, 21.986, 43.437),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 881, " N  " at (33.572, 20.752, 43.431),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 882, " CA " at (32.297, 20.277, 43.992),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 883, " C  " at (31.268, 21.403, 44.166),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 884, " O  " at (30.075, 21.189, 43.975),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 885, " CB " at (32.635, 19.561, 45.311),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 886, " CG " at (31.441, 18.984, 46.079),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 887, " CD " at (30.849, 19.955, 47.107),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 888, " NE " at (29.612, 19.389, 47.649),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 889, " CZ " at (28.454, 19.993, 47.789),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 890, " NH1" at (28.298, 21.283, 47.759),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 891, " NH2" at (27.387, 19.272, 47.927),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 892, " HN " at (34.403, 20.645, 43.997),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 893, " HE " at (29.606, 18.399, 47.879),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 894, "1HH1" at (29.113, 21.886, 47.866),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 895, "2HH1" at (27.364, 21.663, 47.789),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 896, "1HH2" at (27.459, 18.275, 47.733),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 897, "2HH2" at (26.484, 19.705, 48.020),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 898, " N  " at (31.733, 22.605, 44.490),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 899, " CA " at (30.957, 23.850, 44.489),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 900, " C  " at (30.822, 24.515, 43.098),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 901, " O  " at (30.272, 25.611, 43.031),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 902, " CB " at (31.539, 24.819, 45.546),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 903, " CG " at (30.813, 24.723, 46.895),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 904, " CD " at (31.255, 23.570, 47.805),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 905, " OE2" at (30.368, 22.972, 48.462),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 906, " OE1" at (32.477, 23.317, 47.964),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 907, " HN " at (32.738, 22.716, 44.541),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 908, " HE2" at (30.671, 22.208, 49.070),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 909, " N  " at (31.263, 23.893, 41.983),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 910, " CA " at (31.247, 24.529, 40.651),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 911, " C  " at (30.834, 23.649, 39.462),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 912, " O  " at (29.799, 23.932, 38.868),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 913, " CB " at (32.610, 25.193, 40.386),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 914, " CG " at (32.683, 26.246, 39.260),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 915, " CD1" at (32.517, 25.691, 37.841),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 916, " CD2" at (31.664, 27.361, 39.466),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 917, " HN " at (31.731, 23.001, 42.084),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 918, " N  " at (31.667, 22.671, 39.071),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 919, " CA " at (31.842, 22.074, 37.721),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 920, " C  " at (30.640, 21.307, 37.100),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 921, " O  " at (30.780, 20.207, 36.561),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 922, " CB " at (33.094, 21.185, 37.782),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 923, " HN " at (32.368, 22.404, 39.751),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 924, " N  " at (29.431, 21.851, 37.222),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 925, " CA " at (28.118, 21.220, 37.043),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 926, " C  " at (27.612, 20.190, 38.087),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 927, " O  " at (26.541, 19.639, 37.838),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 928, " CB " at (27.845, 20.818, 35.582),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 929, " OG " at (27.823, 21.962, 34.740),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 930, " HN " at (29.411, 22.769, 37.647),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 931, " HG " at (28.717, 22.406, 34.761),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 932, " N  " at (28.215, 19.977, 39.281),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 933, " CA " at (27.477, 19.635, 40.498),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 934, " C  " at (26.879, 20.920, 41.131),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 935, " O  " at (26.087, 21.612, 40.487),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 936, " CB " at (28.480, 18.848, 41.354),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 937, " CG " at (29.819, 19.481, 41.014),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 938, " CD " at (29.638, 19.971, 39.586),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 939, " N  " at (27.241, 21.275, 42.371),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 940, " CA " at (26.531, 22.258, 43.204),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 941, " C  " at (26.517, 23.719, 42.709),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 942, " O  " at (25.672, 24.491, 43.160),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 943, " CB " at (27.152, 22.205, 44.600),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 944, " HN " at (27.931, 20.708, 42.844),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 945, " N  " at (27.432, 24.100, 41.812),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 946, " CA " at (27.571, 25.446, 41.242),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 947, " C  " at (27.294, 25.519, 39.740),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 948, " O  " at (27.790, 26.415, 39.055),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 949, " HN " at (28.104, 23.408, 41.523),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 950, " N  " at (26.471, 24.601, 39.222),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 951, " CA " at (26.018, 24.548, 37.820),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 952, " C  " at (25.334, 25.845, 37.334),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 953, " O  " at (25.105, 26.018, 36.136),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 954, " CB " at (25.105, 23.324, 37.633),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 955, " OG " at (25.153, 22.816, 36.307),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 956, " HN " at (26.068, 23.941, 39.873),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 957, " HG " at (26.103, 22.641, 36.053),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 958, " N  " at (25.035, 26.789, 38.233),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 959, " CA " at (24.748, 28.191, 37.928),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 960, " C  " at (25.938, 28.908, 37.244),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 961, " O  " at (25.892, 29.148, 36.035),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 962, " CB " at (24.332, 28.879, 39.240),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 963, " HN " at (25.115, 26.529, 39.210),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 964, " N  " at (27.003, 29.189, 38.007),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 965, " CA " at (28.161, 30.004, 37.615),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 966, " C  " at (28.892, 29.432, 36.395),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 967, " O  " at (29.427, 30.187, 35.589),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 968, " CB " at (29.058, 30.129, 38.856),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 969, " CG " at (30.213, 31.148, 38.862),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 970, " CD1" at (30.942, 30.988, 40.186),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 971, " CD2" at (31.272, 30.979, 37.779),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 972, " HN " at (26.993, 28.835, 38.950),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 973, " N  " at (28.816, 28.112, 36.184),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 974, " CA " at (29.167, 27.425, 34.925),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 975, " C  " at (28.750, 28.223, 33.677),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 976, " O  " at (29.579, 28.443, 32.797),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 977, " CB " at (28.506, 26.032, 34.929),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 978, " CG1" at (28.468, 25.308, 33.585),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 979, " CG2" at (29.230, 25.113, 35.912),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 980, " HN " at (28.401, 27.556, 36.921),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 981, " N  " at (27.524, 28.752, 33.617),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 982, " CA " at (27.024, 29.514, 32.460),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 983, " C  " at (27.824, 30.799, 32.146),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 984, " O  " at (27.806, 31.283, 31.012),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 985, " CB " at (25.541, 29.837, 32.696),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 986, " CG " at (24.674, 28.597, 32.648),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 987, " HN " at (26.915, 28.640, 34.420),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 988, " ND2" at (24.364, 28.006, 33.775),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 989, " OD1" at (24.257, 28.164, 31.584),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 990, "1HD2" at (23.730, 27.221, 33.744),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 991, "2HD2" at (24.709, 28.384, 34.651),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 992, " N  " at (28.557, 31.323, 33.132),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 993, " CA " at (29.403, 32.512, 33.046),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 994, " C  " at (30.917, 32.205, 32.932),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 995, " O  " at (31.681, 33.158, 32.830),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 996, " CB " at (29.114, 33.450, 34.246),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 997, " CG " at (27.683, 33.996, 34.457),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 998, " CD1" at (27.062, 34.557, 33.178),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 999, " CD2" at (26.712, 33.008, 35.099),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1000, " HN " at (28.543, 30.849, 34.030),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1001, " N  " at (31.375, 30.934, 32.967),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1002, " CA " at (32.811, 30.564, 32.791),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1003, " C  " at (33.120, 29.275, 32.002),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1004, " O  " at (34.272, 29.086, 31.620),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 1005, " CB " at (33.602, 30.523, 34.125),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1006, " CG1" at (33.165, 29.371, 35.057),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1007, " CG2" at (33.606, 31.881, 34.838),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1008, " CD1" at (34.087, 29.206, 36.275),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1009, " HN " at (30.695, 30.199, 33.119),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1010, " N  " at (32.158, 28.385, 31.717),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1011, " CA " at (32.450, 27.122, 30.998),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1012, " C  " at (32.686, 27.272, 29.488),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1013, " O  " at (33.202, 26.346, 28.867),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 1014, " CB " at (31.380, 26.056, 31.292),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1015, " CG " at (30.058, 26.188, 30.507),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1016, " CD " at (29.419, 24.827, 30.216),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1017, " NE " at (28.243, 24.980, 29.352),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1018, " CZ " at (28.036, 24.476, 28.157),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1019, " NH1" at (28.913, 23.801, 27.480),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1020, " NH2" at (26.866, 24.665, 27.638),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1021, " HN " at (31.221, 28.534, 32.081),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1022, " HE " at (27.458, 25.508, 29.717),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1023, "1HH1" at (29.873, 23.771, 27.793),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1024, "2HH1" at (28.654, 23.279, 26.651),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1025, "1HH2" at (26.155, 25.146, 28.177),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1026, "2HH2" at (26.631, 24.175, 26.779),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1027, " N  " at (32.214, 28.387, 28.908),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1028, " CA " at (32.081, 28.638, 27.459),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1029, " C  " at (31.597, 27.407, 26.658),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1030, " O  " at (30.940, 26.528, 27.214),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 1031, " CB " at (33.380, 29.253, 26.909),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1032, " CG " at (34.593, 28.369, 26.762),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1033, " HN " at (31.815, 29.071, 29.528),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1034, " CD2" at (35.627, 28.286, 27.641),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1035, " ND1" at (34.928, 27.665, 25.606),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1036, " CE1" at (36.162, 27.186, 25.806),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1037, " NE2" at (36.618, 27.574, 27.007),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1038, " HE2" at (37.563, 27.430, 27.362),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1039, " HD1" at (34.374, 27.548, 24.815),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1040, " N  " at (31.883, 27.340, 25.356),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1041, " CA " at (32.299, 26.093, 24.697),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1042, " C  " at (32.942, 26.425, 23.327),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1043, " O  " at (32.693, 27.500, 22.763),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 1044, " CB " at (31.147, 25.067, 24.612),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1045, " CG " at (31.463, 23.849, 23.797),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1046, " HN " at (32.310, 28.161, 24.953),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1047, " CD2" at (32.449, 22.943, 24.056),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1048, " ND1" at (30.887, 23.555, 22.570),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1049, " CE1" at (31.556, 22.496, 22.093),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1050, " NE2" at (32.494, 22.100, 22.967),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1051, " HE2" at (33.150, 21.343, 22.812),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1052, " HD1" at (30.149, 24.021, 22.141),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1053, " N  " at (33.784, 25.519, 22.819),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1054, " CA " at (34.525, 25.613, 21.549),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1055, " C  " at (33.734, 25.050, 20.346),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1056, " O  " at (32.523, 24.863, 20.410),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 1057, " CB " at (35.898, 24.940, 21.748),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1058, " CG " at (35.864, 23.469, 22.085),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1059, " CD2" at (35.638, 22.462, 21.192),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1060, " ND1" at (36.018, 22.920, 23.363),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1061, " CE1" at (35.876, 21.593, 23.206),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1062, " NE2" at (35.658, 21.292, 21.916),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1063, " HN " at (33.825, 24.630, 23.290),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1064, " HE2" at (35.565, 20.350, 21.549),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1065, " HD1" at (36.190, 23.399, 24.186),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1066, " N  " at (34.394, 24.814, 19.208),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1067, " CA " at (33.770, 24.358, 17.953),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1068, " C  " at (34.407, 23.068, 17.399),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1069, " O  " at (34.226, 22.755, 16.227),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 1070, " CB " at (33.780, 25.552, 16.977),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1071, " CG " at (33.081, 25.383, 15.642),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1072, " HN " at (35.386, 25.000, 19.199),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1073, " CD2" at (33.703, 25.157, 14.449),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1074, " ND1" at (31.697, 25.442, 15.418),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1075, " CE1" at (31.525, 25.200, 14.105),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1076, " NE2" at (32.711, 25.025, 13.501),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1077, " HE2" at (32.841, 24.748, 12.524),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1078, " HD1" at (31.010, 25.621, 16.076),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1079, " N  " at (35.178, 22.329, 18.211),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1080, " CA " at (36.129, 21.301, 17.747),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1081, " C  " at (36.144, 20.040, 18.646),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1082, " O  " at (35.081, 19.593, 19.082),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 1083, " CB " at (37.504, 21.972, 17.555),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1084, " CG " at (37.490, 23.164, 16.623),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1085, " HN " at (35.227, 22.587, 19.192),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1086, " CD2" at (37.607, 24.472, 16.996),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1087, " ND1" at (37.350, 23.100, 15.234),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1088, " CE1" at (37.383, 24.374, 14.806),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1089, " NE2" at (37.541, 25.218, 15.840),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1090, " HE2" at (37.607, 26.236, 15.767),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1091, " HD1" at (37.249, 22.303, 14.694),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1092, " N  " at (37.305, 19.404, 18.864),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1093, " CA " at (37.470, 18.013, 19.339),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1094, " C  " at (37.051, 17.726, 20.787),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1095, " O  " at (37.866, 17.918, 21.720),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 1096, " CB " at (38.921, 17.574, 19.051),  was assigned atom type "C" (rec_index= 1, atom_type= 1).
+Atom no. 1097, " CG " at (39.338, 17.672, 17.604),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1098, " OXT" at (35.942, 17.168, 20.963),  was assigned atom type "OA" (rec_index= 5, atom_type= 5).
+Atom no. 1099, " HN " at (38.147, 19.856, 18.530),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1100, " HO " at (38.152, 16.919, 22.770),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1101, " CD2" at (39.364, 16.640, 16.716),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1102, " ND1" at (39.769, 18.830, 16.948),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1103, " CE1" at (40.046, 18.464, 15.685),  was assigned atom type "A" (rec_index= 0, atom_type= 0).
+Atom no. 1104, " NE2" at (39.812, 17.151, 15.521),  was assigned atom type "N" (rec_index= 4, atom_type= 4).
+Atom no. 1105, " HE2" at (39.943, 16.617, 14.661),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+Atom no. 1106, " HD1" at (39.851, 19.719, 17.331),  was assigned atom type "HD" (rec_index= 3, atom_type= 3).
+
+Maximum partial atomic charge found = +0.665 e
+Minimum partial atomic charge found = -0.776 e
+
+Atom	Atom	Number of this Type
+Type	 ID 	 in Receptor
+____	____	___________________
+ 0	 A		    42
+ 1	 C		   501
+ 3	 HD		   224
+ 4	 N		   155
+ 5	 OA		   184
+
+Total number of atoms :		1106 atoms 
+Total charge :			-8.96 e
+
+
+Receptor coordinates fit within the following volume:
+
+                   _______(47.7, 47.6, 54.9)
+                  /|     /|
+                 / |    / |
+                /______/  |
+                |  |___|__| Midpoint = (30.2, 32.1, 33.7)
+                |  /   |  /
+                | /    | /
+                |/_____|/
+(12.8, 16.6, 12.5)      
+
+Maximum coordinates :		(47.669, 47.648, 54.915)
+Minimum coordinates :		(12.808, 16.617, 12.524)
+
+
+GPF> gridcenter 32.28 31.006 32.304       # xyz-coordinates or auto
+
+Grid maps will be centered on user-defined coordinates:
+
+		(32.280, 31.006, 32.304)
+
+Grid maps will cover the following volume:
+
+                   _______(49.9, 47.5, 55.9)
+                  /|     /|
+                 / |    / |
+                /______/  |
+                |  |___|__| Midpoint = (32.3, 31.0, 32.3)
+                |  /   |  /
+                | /    | /
+                |/_____|/
+(14.7, 14.5, 8.7)      
+
+Grid map x-dimension :		35.3 Angstroms
+Grid map y-dimension :		33.0 Angstroms
+Grid map z-dimension :		47.3 Angstroms
+
+Maximum coordinates :		(49.905, 47.506, 55.929)
+Minimum coordinates :		(14.655, 14.506, 8.679)
+
+GPF> smooth 0.5                           # store minimum energy w/in rad(A)
+
+Potentials will be smoothed by: 0.500 Angstrom
+
+GPF> map output_model1.R.map              # atom-specific affinity map
+
+Output Grid Map 1:   output_model1.R.map
+
+GPF> elecmap output_model1.e.map          # electrostatic potential map
+
+Output Electrostatic Potential Energy Grid Map: output_model1.e.map
+
+GPF> dsolvmap output_model1.d.map              # desolvation potential map
+
+Output Desolvation Free Energy Grid Map: output_model1.d.map
+
+GPF> dielectric -0.1465                   # <0, AD4 distance-dep.diel;>0, constant
+
+Using *distance-dependent* dielectric function of Mehler and Solmajer, Prot.Eng.4, 903-910.
+
+  d   Dielectric
+ ___  __________
+ 0.0     1.00
+ 0.1     1.63
+ 0.2     1.91
+ 0.3     2.21
+ 0.4     2.51
+ 0.5     2.82
+ 0.6     3.13
+ 0.7     3.45
+ 0.8     3.78
+ 0.9     4.12
+ 1.0     4.47
+ 1.1     4.82
+ 1.2     5.18
+ 1.3     5.55
+ 1.4     5.93
+ 1.5     6.31
+ 1.6     6.70
+ 1.7     7.10
+ 1.8     7.51
+ 1.9     7.93
+ 2.0     8.36
+ 2.1     8.79
+ 2.2     9.23
+ 2.3     9.68
+ 2.4    10.14
+ 2.5    10.61
+ 2.6    11.08
+ 2.7    11.57
+ 2.8    12.06
+ 2.9    12.56
+ 3.0    13.07
+ 3.1    13.58
+ 3.2    14.11
+ 3.3    14.64
+ 3.4    15.18
+ 3.5    15.73
+ 3.6    16.28
+ 3.7    16.85
+ 3.8    17.42
+ 3.9    18.00
+ 4.0    18.58
+ 4.1    19.17
+ 4.2    19.77
+ 4.3    20.38
+ 4.4    20.99
+ 4.5    21.61
+ 4.6    22.23
+ 4.7    22.86
+ 4.8    23.50
+ 4.9    24.14
+ 5.0    24.78
+
+
+>>> Closing the grid parameter file (GPF)... <<<
+
+________________________________________________________________________________
+
+
+
+No Floating Grid was requested.
+
+
+Calculating Pairwise Interaction Energies
+=========================================
+
+
+             13214790.8          1796.6 
+    E    =  -----------  -  -----------
+     R, A         12               6
+                r               r 
+
+Calculating energies for R-A interactions.
+
+             13214790.8          1796.6 
+    E    =  -----------  -  -----------
+     R, C         12               6
+                r               r 
+
+Calculating energies for R-C interactions.
+
+              321686.2           169.4 
+    E    =  -----------  -  -----------
+     R, H         12               6
+                r               r 
+
+Calculating energies for R-H interactions.
+
+              321686.2           169.4 
+    E    =  -----------  -  -----------
+     R, HD         12               6
+                r               r 
+
+Calculating energies for R-HD interactions.
+
+             7328018.6          1359.7 
+    E    =  -----------  -  -----------
+     R, N         12               6
+                r               r 
+
+Calculating energies for R-N interactions.
+
+             5551419.3          1251.3 
+    E    =  -----------  -  -----------
+     R, OA         12               6
+                r               r 
+
+Calculating energies for R-OA interactions.
+
+
+Finding the lowest pairwise interaction energy within 0.5 Angstrom ("smoothing").
+
+  r     A        C        H        HD        N        OA    
+ ___ ________ ________ ________ ________ ________ ________
+ 0.0   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.1   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.2   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.3   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.4   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.5   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.6   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.7   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.8   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.9   1e+005   1e+005 60052.22 60052.22   1e+005   1e+005
+ 1.0   1e+005   1e+005 22061.70 22061.70   1e+005   1e+005
+ 1.1   1e+005   1e+005  8750.66  8750.66   1e+005   1e+005
+ 1.2   1e+005   1e+005  3705.83  3705.83 84687.82 64132.36
+ 1.3 68589.93 68589.93  1660.62  1660.62 38009.08 28778.23
+ 1.4 32363.82 32363.82   781.60   781.60 17928.76 13571.16
+ 1.5 15955.28 15955.28   384.02   384.02  8835.06  6685.39
+ 1.6  8177.60  8177.60   195.93   195.93  4525.67  3422.95
+ 1.7  4338.97  4338.97   103.34   103.34  2399.49  1813.73
+ 1.8  2374.70  2374.70    56.11    56.11  1311.95   990.90
+ 1.9  1336.37  1336.37    31.26    31.26   737.38   556.37
+ 2.0   771.15   771.15    17.80    17.80   424.83   320.13
+ 2.1   455.18   455.18    10.33    10.33   250.26   188.27
+ 2.2   274.22   274.22     6.09     6.09   150.39   112.90
+ 2.3   168.28   168.28     3.64     3.64    92.00    68.89
+ 2.4   104.99   104.99     2.19     2.19    57.17    42.67
+ 2.5    66.49    66.49     1.33     1.33    36.03    26.78
+ 2.6    42.66    42.66     0.80     0.80    22.98    17.00
+ 2.7    27.70    27.70     0.48     0.48    14.81    10.88
+ 2.8    18.16    18.16     0.29     0.29     9.62     7.01
+ 2.9    12.01    12.01     0.16     0.16     6.29     4.54
+ 3.0     7.99     7.99     0.09     0.09     4.12     2.94
+ 3.1     5.34     5.34     0.04     0.04     2.71     1.89
+ 3.2     3.58     3.58     0.01     0.01     1.77     1.21
+ 3.3     2.40     2.40    -0.00    -0.00     1.15     0.76
+ 3.4     1.60     1.60    -0.01    -0.01     0.74     0.46
+ 3.5     1.06     1.06    -0.02    -0.02     0.46     0.27
+ 3.6     0.69     0.69    -0.02    -0.02     0.27     0.14
+ 3.7     0.44     0.44    -0.02    -0.02     0.15     0.06
+ 3.8     0.27     0.27    -0.02    -0.02     0.07     0.00
+ 3.9     0.15     0.15    -0.02    -0.02     0.01    -0.03
+ 4.0     0.08     0.08    -0.02    -0.02    -0.02    -0.05
+ 4.1     0.02     0.02    -0.02    -0.02    -0.04    -0.06
+ 4.2    -0.01    -0.01    -0.02    -0.02    -0.05    -0.07
+ 4.3    -0.03    -0.03    -0.02    -0.02    -0.06    -0.07
+ 4.4    -0.05    -0.05    -0.02    -0.02    -0.06    -0.07
+ 4.5    -0.06    -0.06    -0.02    -0.02    -0.06    -0.07
+ 4.6    -0.06    -0.06    -0.02    -0.02    -0.06    -0.07
+ 4.7    -0.06    -0.06    -0.02    -0.02    -0.06    -0.07
+ 4.8    -0.06    -0.06    -0.02    -0.02    -0.06    -0.07
+ 4.9    -0.06    -0.06    -0.01    -0.01    -0.06    -0.07
+ 5.0    -0.06    -0.06    -0.01    -0.01    -0.06    -0.07
+
+
+
+EnergyTable:
+Finding the lowest pairwise interaction energy within 0.5 Angstrom ("smoothing").
+
+  r     A        C        H        HD        N        OA    
+ ___ ________ ________ ________ ________ ________ ________
+ 0.0   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.1   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.2   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.3   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.4   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.5   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.6   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.7   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.8   1e+005   1e+005   1e+005   1e+005   1e+005   1e+005
+ 0.9   1e+005   1e+005 60052.22 60052.22   1e+005   1e+005
+ 1.0   1e+005   1e+005 22061.70 22061.70   1e+005   1e+005
+ 1.1   1e+005   1e+005  8750.66  8750.66   1e+005   1e+005
+ 1.2   1e+005   1e+005  3705.83  3705.83 84687.82 64132.36
+ 1.3 68589.93 68589.93  1660.62  1660.62 38009.08 28778.23
+ 1.4 32363.82 32363.82   781.60   781.60 17928.76 13571.16
+ 1.5 15955.28 15955.28   384.02   384.02  8835.06  6685.39
+ 1.6  8177.60  8177.60   195.93   195.93  4525.67  3422.95
+ 1.7  4338.97  4338.97   103.34   103.34  2399.49  1813.73
+ 1.8  2374.70  2374.70    56.11    56.11  1311.95   990.90
+ 1.9  1336.37  1336.37    31.26    31.26   737.38   556.37
+ 2.0   771.15   771.15    17.80    17.80   424.83   320.13
+ 2.1   455.18   455.18    10.33    10.33   250.26   188.27
+ 2.2   274.22   274.22     6.09     6.09   150.39   112.90
+ 2.3   168.28   168.28     3.64     3.64    92.00    68.89
+ 2.4   104.99   104.99     2.19     2.19    57.17    42.67
+ 2.5    66.49    66.49     1.33     1.33    36.03    26.78
+ 2.6    42.66    42.66     0.80     0.80    22.98    17.00
+ 2.7    27.70    27.70     0.48     0.48    14.81    10.88
+ 2.8    18.16    18.16     0.29     0.29     9.62     7.01
+ 2.9    12.01    12.01     0.16     0.16     6.29     4.54
+ 3.0     7.99     7.99     0.09     0.09     4.12     2.94
+ 3.1     5.34     5.34     0.04     0.04     2.71     1.89
+ 3.2     3.58     3.58     0.01     0.01     1.77     1.21
+ 3.3     2.40     2.40    -0.00    -0.00     1.15     0.76
+ 3.4     1.60     1.60    -0.01    -0.01     0.74     0.46
+ 3.5     1.06     1.06    -0.02    -0.02     0.46     0.27
+ 3.6     0.69     0.69    -0.02    -0.02     0.27     0.14
+ 3.7     0.44     0.44    -0.02    -0.02     0.15     0.06
+ 3.8     0.27     0.27    -0.02    -0.02     0.07     0.00
+ 3.9     0.15     0.15    -0.02    -0.02     0.01    -0.03
+ 4.0     0.08     0.08    -0.02    -0.02    -0.02    -0.05
+ 4.1     0.02     0.02    -0.02    -0.02    -0.04    -0.06
+ 4.2    -0.01    -0.01    -0.02    -0.02    -0.05    -0.07
+ 4.3    -0.03    -0.03    -0.02    -0.02    -0.06    -0.07
+ 4.4    -0.05    -0.05    -0.02    -0.02    -0.06    -0.07
+ 4.5    -0.06    -0.06    -0.02    -0.02    -0.06    -0.07
+ 4.6    -0.06    -0.06    -0.02    -0.02    -0.06    -0.07
+ 4.7    -0.06    -0.06    -0.02    -0.02    -0.06    -0.07
+ 4.8    -0.06    -0.06    -0.02    -0.02    -0.06    -0.07
+ 4.9    -0.06    -0.06    -0.01    -0.01    -0.06    -0.07
+ 5.0    -0.06    -0.06    -0.01    -0.01    -0.06    -0.07
+
+Beginning grid calculations.
+
+Calculating 3 grids over 1073785 elements, around 1106 receptor atoms.
+
+                    Percent   Estimated Time  Time/this plane
+XY-plane  Z-coord   Done      Remaining       Real, User, System
+            /Ang              /sec            /sec
+________  ________  ________  ______________  __________________________
+
+    -63    -14.946     0.8%           20.16s  Real= 0.16,  CPU= 0.17,  System= 0.00
+    -62    -14.571     1.6%           21.75s  Real= 0.17,  CPU= 0.16,  System= 0.02
+    -61    -14.196     2.4%           24.68s  Real= 0.20,  CPU= 0.20,  System= 0.00
+    -60    -13.821     3.1%           23.37s  Real= 0.19,  CPU= 0.19,  System= 0.00
+    -59    -13.446     3.9%           24.64s  Real= 0.20,  CPU= 0.20,  System= 0.00
+    -58    -13.071     4.7%           25.89s  Real= 0.21,  CPU= 0.20,  System= 0.00
+    -57    -12.696     5.5%           24.96s  Real= 0.21,  CPU= 0.22,  System= 0.00
+    -56    -12.321     6.3%           25.94s  Real= 0.22,  CPU= 0.22,  System= 0.00
+    -55    -11.946     7.1%           27.38s  Real= 0.23,  CPU= 0.22,  System= 0.00
+    -54    -11.571     7.9%           28.20s  Real= 0.24,  CPU= 0.25,  System= 0.00
+    -53    -11.196     8.7%           25.75s  Real= 0.22,  CPU= 0.20,  System= 0.02
+    -52    -10.821     9.4%           27.14s  Real= 0.24,  CPU= 0.23,  System= 0.00
+    -51    -10.446    10.2%           28.04s  Real= 0.25,  CPU= 0.25,  System= 0.00
+    -50    -10.071    11.0%           26.22s  Real= 0.23,  CPU= 0.24,  System= 0.00
+    -49     -9.696    11.8%           26.10s  Real= 0.23,  CPU= 0.22,  System= 0.00
+    -48     -9.321    12.6%           26.08s  Real= 0.24,  CPU= 0.24,  System= 0.00
+    -47     -8.946    13.4%           26.29s  Real= 0.24,  CPU= 0.22,  System= 0.01
+    -46     -8.571    14.2%           24.63s  Real= 0.23,  CPU= 0.22,  System= 0.00
+    -45     -8.196    15.0%           25.49s  Real= 0.24,  CPU= 0.25,  System= 0.00
+    -44     -7.821    15.7%           25.68s  Real= 0.24,  CPU= 0.24,  System= 0.00
+    -43     -7.446    16.5%           24.06s  Real= 0.23,  CPU= 0.22,  System= 0.00
+    -42     -7.071    17.3%           29.82s  Real= 0.28,  CPU= 0.28,  System= 0.00
+    -41     -6.696    18.1%           27.35s  Real= 0.26,  CPU= 0.23,  System= 0.00
+    -40     -6.321    18.9%           25.13s  Real= 0.24,  CPU= 0.25,  System= 0.00
+    -39     -5.946    19.7%           27.44s  Real= 0.27,  CPU= 0.27,  System= 0.00
+    -38     -5.571    20.5%           33.23s  Real= 0.33,  CPU= 0.30,  System= 0.02
+    -37     -5.196    21.3%           36.10s  Real= 0.36,  CPU= 0.34,  System= 0.00
+    -36     -4.821    22.0%           36.23s  Real= 0.37,  CPU= 0.36,  System= 0.02
+    -35     -4.446    22.8%           53.70s  Real= 0.55,  CPU= 0.48,  System= 0.00
+    -34     -4.071    23.6%           47.14s  Real= 0.49,  CPU= 0.47,  System= 0.00
+    -33     -3.696    24.4%           44.16s  Real= 0.46,  CPU= 0.45,  System= 0.00
+    -32     -3.321    25.2%        1m 44.97s  Real= 1.11,  CPU= 0.78,  System= 0.01
+    -31     -2.946    26.0%           57.25s  Real= 0.61,  CPU= 0.56,  System= 0.00
+    -30     -2.571    26.8%        1m 13.56s  Real= 0.79,  CPU= 0.59,  System= 0.00
+    -29     -2.196    27.6%           34.78s  Real= 0.38,  CPU= 0.38,  System= 0.00
+    -28     -1.821    28.3%           32.31s  Real= 0.35,  CPU= 0.36,  System= 0.00
+    -27     -1.446    29.1%           29.88s  Real= 0.33,  CPU= 0.33,  System= 0.00
+    -26     -1.071    29.9%           36.13s  Real= 0.41,  CPU= 0.36,  System= 0.00
+    -25     -0.696    30.7%           31.68s  Real= 0.36,  CPU= 0.34,  System= 0.02
+    -24     -0.321    31.5%           26.10s  Real= 0.30,  CPU= 0.30,  System= 0.00
+    -23      0.054    32.3%           30.27s  Real= 0.35,  CPU= 0.36,  System= 0.00
+    -22      0.429    33.1%           36.13s  Real= 0.42,  CPU= 0.42,  System= 0.00
+    -21      0.804    33.9%           37.13s  Real= 0.44,  CPU= 0.42,  System= 0.00
+    -20      1.179    34.6%           37.76s  Real= 0.46,  CPU= 0.41,  System= 0.00
+    -19      1.554    35.4%           38.38s  Real= 0.47,  CPU= 0.47,  System= 0.00
+    -18      1.929    36.2%           38.07s  Real= 0.47,  CPU= 0.45,  System= 0.00
+    -17      2.304    37.0%           28.56s  Real= 0.36,  CPU= 0.36,  System= 0.00
+    -16      2.679    37.8%           31.84s  Real= 0.40,  CPU= 0.41,  System= 0.00
+    -15      3.054    38.6%           33.70s  Real= 0.43,  CPU= 0.44,  System= 0.00
+    -14      3.429    39.4%           37.50s  Real= 0.49,  CPU= 0.42,  System= 0.01
+    -13      3.804    40.2%           27.59s  Real= 0.36,  CPU= 0.33,  System= 0.02
+    -12      4.179    40.9%           30.90s  Real= 0.41,  CPU= 0.41,  System= 0.00
+    -11      4.554    41.7%           25.46s  Real= 0.34,  CPU= 0.34,  System= 0.00
+    -10      4.929    42.5%           22.05s  Real= 0.30,  CPU= 0.30,  System= 0.00
+     -9      5.304    43.3%           25.56s  Real= 0.35,  CPU= 0.36,  System= 0.00
+     -8      5.679    44.1%           23.29s  Real= 0.33,  CPU= 0.31,  System= 0.00
+     -7      6.054    44.9%           19.81s  Real= 0.28,  CPU= 0.28,  System= 0.00
+     -6      6.429    45.7%           19.32s  Real= 0.28,  CPU= 0.28,  System= 0.00
+     -5      6.804    46.5%           19.31s  Real= 0.28,  CPU= 0.27,  System= 0.02
+     -4      7.179    47.2%           19.97s  Real= 0.30,  CPU= 0.30,  System= 0.00
+     -3      7.554    48.0%           17.03s  Real= 0.26,  CPU= 0.25,  System= 0.00
+     -2      7.929    48.8%           19.57s  Real= 0.30,  CPU= 0.31,  System= 0.00
+     -1      8.304    49.6%           20.22s  Real= 0.32,  CPU= 0.31,  System= 0.00
+      0      8.679    50.4%           18.02s  Real= 0.29,  CPU= 0.28,  System= 0.00
+      1      9.054    51.2%           18.23s  Real= 0.29,  CPU= 0.30,  System= 0.00
+      2      9.429    52.0%           16.71s  Real= 0.27,  CPU= 0.28,  System= 0.00
+      3      9.804    52.8%           17.34s  Real= 0.29,  CPU= 0.28,  System= 0.00
+      4     10.179    53.5%           18.64s  Real= 0.32,  CPU= 0.31,  System= 0.00
+      5     10.554    54.3%           17.98s  Real= 0.31,  CPU= 0.30,  System= 0.00
+      6     10.929    55.1%           17.39s  Real= 0.30,  CPU= 0.31,  System= 0.00
+      7     11.304    55.9%           17.25s  Real= 0.31,  CPU= 0.30,  System= 0.00
+      8     11.679    56.7%           21.56s  Real= 0.39,  CPU= 0.39,  System= 0.00
+      9     12.054    57.5%           20.30s  Real= 0.38,  CPU= 0.34,  System= 0.00
+     10     12.429    58.3%           18.50s  Real= 0.35,  CPU= 0.34,  System= 0.00
+     11     12.804    59.1%           18.30s  Real= 0.35,  CPU= 0.34,  System= 0.00
+     12     13.179    59.8%           16.98s  Real= 0.33,  CPU= 0.33,  System= 0.01
+     13     13.554    60.6%           16.60s  Real= 0.33,  CPU= 0.31,  System= 0.00
+     14     13.929    61.4%           14.41s  Real= 0.29,  CPU= 0.30,  System= 0.00
+     15     14.304    62.2%           14.54s  Real= 0.30,  CPU= 0.28,  System= 0.00
+     16     14.679    63.0%           13.54s  Real= 0.29,  CPU= 0.30,  System= 0.00
+     17     15.054    63.8%           13.57s  Real= 0.29,  CPU= 0.27,  System= 0.00
+     18     15.429    64.6%           13.59s  Real= 0.30,  CPU= 0.31,  System= 0.00
+     19     15.804    65.4%           12.98s  Real= 0.29,  CPU= 0.30,  System= 0.00
+     20     16.179    66.1%           13.07s  Real= 0.30,  CPU= 0.30,  System= 0.00
+     21     16.554    66.9%           12.81s  Real= 0.30,  CPU= 0.30,  System= 0.00
+     22     16.929    67.7%           13.37s  Real= 0.33,  CPU= 0.31,  System= 0.00
+     23     17.304    68.5%           12.48s  Real= 0.31,  CPU= 0.30,  System= 0.02
+     24     17.679    69.3%           11.19s  Real= 0.29,  CPU= 0.28,  System= 0.00
+     25     18.054    70.1%           11.13s  Real= 0.29,  CPU= 0.30,  System= 0.00
+     26     18.429    70.9%           12.65s  Real= 0.34,  CPU= 0.33,  System= 0.00
+     27     18.804    71.7%           12.49s  Real= 0.35,  CPU= 0.36,  System= 0.00
+     28     19.179    72.4%           11.83s  Real= 0.34,  CPU= 0.30,  System= 0.02
+     29     19.554    73.2%           11.25s  Real= 0.33,  CPU= 0.33,  System= 0.00
+     30     19.929    74.0%            9.77s  Real= 0.30,  CPU= 0.30,  System= 0.00
+     31     20.304    74.8%            9.41s  Real= 0.29,  CPU= 0.30,  System= 0.00
+     32     20.679    75.6%            8.84s  Real= 0.29,  CPU= 0.28,  System= 0.00
+     33     21.054    76.4%            8.55s  Real= 0.29,  CPU= 0.30,  System= 0.00
+     34     21.429    77.2%            9.40s  Real= 0.32,  CPU= 0.31,  System= 0.00
+     35     21.804    78.0%            7.95s  Real= 0.28,  CPU= 0.30,  System= 0.00
+     36     22.179    78.7%            7.53s  Real= 0.28,  CPU= 0.28,  System= 0.00
+     37     22.554    79.5%            7.67s  Real= 0.29,  CPU= 0.28,  System= 0.00
+     38     22.929    80.3%            7.53s  Real= 0.30,  CPU= 0.31,  System= 0.00
+     39     23.304    81.1%            7.63s  Real= 0.32,  CPU= 0.30,  System= 0.01
+     40     23.679    81.9%            7.96s  Real= 0.35,  CPU= 0.34,  System= 0.00
+     41     24.054    82.7%            7.79s  Real= 0.35,  CPU= 0.36,  System= 0.00
+     42     24.429    83.5%            8.78s  Real= 0.42,  CPU= 0.39,  System= 0.00
+     43     24.804    84.3%            6.96s  Real= 0.35,  CPU= 0.34,  System= 0.00
+     44     25.179    85.0%            5.57s  Real= 0.29,  CPU= 0.30,  System= 0.00
+     45     25.554    85.8%            4.54s  Real= 0.25,  CPU= 0.25,  System= 0.00
+     46     25.929    86.6%            3.99s  Real= 0.24,  CPU= 0.22,  System= 0.02
+     47     26.304    87.4%            3.94s  Real= 0.25,  CPU= 0.25,  System= 0.00
+     48     26.679    88.2%            3.80s  Real= 0.25,  CPU= 0.25,  System= 0.00
+     49     27.054    89.0%            3.61s  Real= 0.26,  CPU= 0.25,  System= 0.00
+     50     27.429    89.8%            3.44s  Real= 0.27,  CPU= 0.27,  System= 0.00
+     51     27.804    90.6%            3.40s  Real= 0.28,  CPU= 0.28,  System= 0.00
+     52     28.179    91.3%            3.01s  Real= 0.27,  CPU= 0.28,  System= 0.00
+     53     28.554    92.1%            2.71s  Real= 0.27,  CPU= 0.27,  System= 0.00
+     54     28.929    92.9%            2.57s  Real= 0.29,  CPU= 0.30,  System= 0.00
+     55     29.304    93.7%            2.45s  Real= 0.31,  CPU= 0.28,  System= 0.01
+     56     29.679    94.5%            2.02s  Real= 0.29,  CPU= 0.30,  System= 0.00
+     57     30.054    95.3%            1.72s  Real= 0.29,  CPU= 0.28,  System= 0.00
+     58     30.429    96.1%            1.35s  Real= 0.27,  CPU= 0.27,  System= 0.00
+     59     30.804    96.9%            1.10s  Real= 0.27,  CPU= 0.28,  System= 0.00
+     60     31.179    97.6%            0.80s  Real= 0.27,  CPU= 0.27,  System= 0.00
+     61     31.554    98.4%            0.56s  Real= 0.28,  CPU= 0.28,  System= 0.00
+     62     31.929    99.2%            0.28s  Real= 0.28,  CPU= 0.28,  System= 0.00
+     63     32.304   100.0%            0.00s  Real= 0.25,  CPU= 0.23,  System= 0.00
+
+Grid	Atom	Minimum   	Maximum
+Map 	Type	Energy    	Energy 
+		(kcal/mol)	(kcal/mol)
+____	____	_____________	_____________
+ 1	 R	   -2.21	4.94e+005
+ 2	 e	  -48.46	3.07e+001	Electrostatic Potential
+ 3	 d	    0.00	1.48e+000	Desolvation Potential
+
+
+ * Note:  Every pairwise-atomic interaction was clamped at 100000.00
+
+
+autogrid4.exe: Successful Completion.
+Real= 40.64s,  CPU= 39.22s,  System= 0.28s

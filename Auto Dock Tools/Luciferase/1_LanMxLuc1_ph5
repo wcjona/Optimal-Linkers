@@ -1,0 +1,13 @@
+npts 100 100 86                      # num.grid points in xyz
+parameter_file AD4.1_bound.dat       # force field default parameter file
+gridfld LanMxLuc1_ph5_model1.maps.fld # grid_data_file
+spacing 1.0                          # spacing(A)
+receptor_types A C H HD N NA OA SA   # receptor atom types
+ligand_types Y                       # ligand atom types
+receptor LanMxLuc1_ph5_model1.pdbqt  # macromolecule
+gridcenter 77.591 12.159 23.999      # xyz-coordinates or auto
+smooth 0.5                           # store minimum energy w/in rad(A)
+map LanMxLuc1_ph5_model1.Y.map       # atom-specific affinity map
+elecmap LanMxLuc1_ph5_model1.e.map   # electrostatic potential map
+dsolvmap LanMxLuc1_ph5_model1.d.map              # desolvation potential map
+dielectric -0.1465                   # <0, AD4 distance-dep.diel;>0, constant

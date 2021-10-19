@@ -1,0 +1,31 @@
+CLUSTAL
+
+Target    MVFTLEDFVGDWEQTAAYNLDQVLEQGGVSSLLHNLAVSVTPIQRIVRSGENALKIDIHV
+7mjb.1.A  MVFTLEDFVGDWRQTAGYNLDQVLEQGGVSSLFQNLGVSVTPIQRIVLSGENGLKIDIHV
+6mi5.1.A  ------------------------------------------------------------
+6le5.2.B  ------------------------------------------------------------
+
+Target    IIPYEGLSADQMAQIEEVFKVVYPVDDHHFKVILPYGTLVIDGVTPNMLNYFGRPYEGIA
+7mjb.1.A  IIPYEGLSGDQMGQIEKIFKVVYPVDDHHFKVILHYGTLVIDGVTPNMIDYFGRPYEGIA
+6mi5.1.A  ------------------------------------------------------------
+6le5.2.B  --------------------------------------------------NFEIAFKMFD
+
+Target    VFDGKKITVTGTLWNGNKIIDERLITPDGSMLFRVTINSGGGGSMAPTTTTKVDIAAF-D
+7mjb.1.A  VFDGKKITVTGTLWNGNKIIDERLINPDGSLLFRVTINGVTGWQLC--------------
+6mi5.1.A  ----------------------------------------------PTTTTKVDIAAF-D
+6le5.2.B  LNGDGEVDMEEFEQVQSIIRSQ-T--SMGMRH--RDRPTTGN--TLKSGLCSALTTYFFG
+
+Target    PDKDGTIDLKEALAAG--------SAAFDKLDPDKDGTLDAKELKGRVSE----------
+7mjb.1.A  ------------------------------------------------------------
+6mi5.1.A  PDKDGTIDLKEALAAG--------SAAFDKLDPDKDGTLDAKELKGRVSE----------
+6le5.2.B  ADLKGKLTIKNFLEFQRKLQHDVLKLEFERHDP-VDGRITERQFGGMLLAYSGVQSKKLT
+
+Target    ADLKKLD----------------------------------PDNDGTLDKKEYLAAV---
+7mjb.1.A  ------------------------------------------------------------
+6mi5.1.A  ADLKKLD----------------------------------PDNDGTLDKKEYLAAV---
+6le5.2.B  AMQRQLKKHFKEGKGLTFQEVENFFTFLKNINDVDTALSFYHMAGASLDKVTMQQVARTV
+
+Target    ----------EAQFKAANPDNDGTIDARELASPAGSALVNLIRGGGGSVTGYRLFEEIL
+7mjb.1.A  -----------------------------------------------------------
+6mi5.1.A  ----------EAQFKAANPDNDGTIDARELASPAGSALVNLIR----------------
+6le5.2.B  AKVELSDHVCDVVFALFDCDGNGELSNKEFVSIMKQRL---------------------
